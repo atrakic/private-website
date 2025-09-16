@@ -25,6 +25,8 @@ jobs:
     - name: Install staticrypt
       run: npm install -g staticrypt@3.*
     - name: Build the site
+      env:
+        STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
       run: |
         set -x
         staticrypt -dr plain
