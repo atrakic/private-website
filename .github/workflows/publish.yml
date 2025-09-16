@@ -25,8 +25,13 @@ jobs:
     - name: Build the site
       if: false
       run: |
-        mkdir _site
-        echo '<h1>Hello, world!</h1>' > _site/index.html
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        git checkout plain
+        npm install -y
+        staticrypt -dr plain
+        mv encrypted/plain _site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       #with:
