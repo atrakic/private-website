@@ -31,12 +31,10 @@ jobs:
         set -x
         staticrypt -dr plain
         find .
-        #mv -f encrypted/plain _site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         # Upload entire repository
-        # path: '_site'
         path: encrypted/plain
   deploy:
     environment:
