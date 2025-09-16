@@ -22,12 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: plain
     - name: Build the site
       run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git config --global --add safe.directory "$GITHUB_WORKSPACE"
-        git checkout plain
         npm install -y
         staticrypt -dr plain
         mv encrypted/plain _site
