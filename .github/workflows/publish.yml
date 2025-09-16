@@ -28,7 +28,9 @@ jobs:
       run: npm install -g staticrypt@3.*
     - name: Build the site
       run: |
+        set -x
         staticrypt -dr plain
+        find .
         mv encrypted/plain _site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
