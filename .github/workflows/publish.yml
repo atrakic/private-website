@@ -22,22 +22,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: plain
     - name: Install staticrypt
       run: npm install -g staticrypt@3.*
     - name: Build the site
       run: |
         set -x
-        git config --global --add safe.directory "$GITHUB_WORKSPACE"
         staticrypt -dr plain
         find .
-        mv -f encrypted/plain _site
+        #mv -f encrypted/plain _site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
-      #with:
-      #  # Upload entire repository
-      # path: '_site'
+      with:
+        # Upload entire repository
+        # path: '_site'
+        path: encrypted/plain
   deploy:
     environment:
       name: github-pages

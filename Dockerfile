@@ -1,4 +1,10 @@
-FROM lipanski/docker-static-website:latest
+FROM node:alpine AS build
+WORKDIR /app
+ENV STATICRYPT_PASSWORD=aeTifUQPPfSPYprzjYuEC
+COPY .staticrypt.json ./
+COPY plain ./plain
+RUN npm install -g staticrypt@3.*
+RUN staticrypt -dr plain
 
-# Copy your static files
-COPY _site/ .
+FROM lipanski/docker-static-website:latest AS final
+COPY --from=0 /app/encrypted/plain ./
