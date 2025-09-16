@@ -29,9 +29,10 @@ jobs:
     - name: Build the site
       run: |
         set -x
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
         staticrypt -dr plain
         find .
-        mv encrypted/plain _site
+        mv -f encrypted/plain _site
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       #with:
