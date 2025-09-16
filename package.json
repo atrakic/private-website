@@ -1,0 +1,25 @@
+{
+  "name": "private-website",
+  "version": "1.0.0",
+  "description": "See [Building and deploying a custom site using GitHub Actions and GitHub Pages](https://til.simonwillison.net/github-actions/github-pages) for an explanation of the pattern embodied by this repository template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atrakic/private-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/atrakic/private-website/issues"
+  },
+  "homepage": "https://github.com/atrakic/private-website#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "staticrypt": "^3.5.4"
+  }
+}
