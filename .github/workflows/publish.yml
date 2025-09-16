@@ -23,7 +23,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the site
-      if: false
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
