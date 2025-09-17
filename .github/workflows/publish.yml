@@ -20,8 +20,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci-skip')"
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
+    - name: Checkout private tools
+      uses: actions/checkout@v5
+      with:
+        ref: public
+         path: website
+
     - name: Install staticrypt
       run: npm install -g staticrypt@3.*
     - name: Build the site
@@ -29,13 +36,13 @@ jobs:
         STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
       run: |
         set -x
-        staticrypt -dr plain
+        staticrypt -dr website
         find .
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         # Upload entire repository
-        path: encrypted/plain
+        path: encrypted/website
   deploy:
     environment:
       name: github-pages
