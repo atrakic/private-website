@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         # Upload entire repository
-        path: encrypted/website
+        path: encrypted/website/website
   deploy:
     environment:
       name: github-pages
