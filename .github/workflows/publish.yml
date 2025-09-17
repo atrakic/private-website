@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@v5
       with:
         ref: public
-         path: website
+        path: website
 
     - name: Install staticrypt
       run: npm install -g staticrypt@3.*
